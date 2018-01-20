@@ -4,6 +4,10 @@
   border-bottom: 1px solid #000;
 }
 
+.gallery {
+  width: 100%;
+}
+
 .photos-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -11,6 +15,7 @@
 }
 
 .card {
+  width: 30%;
   border: 1px solid #000;
   padding: 15px;
   text-align: center;
@@ -28,4 +33,26 @@ img {
 
 .stack {
   display: block;
+}
+
+.hashes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hashtag {
+  margin-right: 5px;
+}
+
+
+.filter-form {
+  text-align: center;
+}
+
+.count {
+  text-align: center;
+}
+
+label {
+  margin-right: 15px;
 }
