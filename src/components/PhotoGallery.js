@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { getPhotos } from '../helpers/instagram-api';
 import Loading from './Loading';
 import Card from './Card';
-import Filter from './Filter';
+import DropDown from './DropDown';
+import InputSearch from './InputSearch';
 import ResultsCount from './ResultsCount';
 
 class PhotoGallery extends Component {
@@ -12,24 +13,26 @@ class PhotoGallery extends Component {
     this.state = {
       photos: null,
       count: 0,
-      filter: 'all'
+      filter: 'all',
+      id: 'dropDown'
     };
 
     this.getPhotosFromApi = this.getPhotosFromApi.bind(this);
   }
 
   componentDidMount() {
-    this.getPhotosFromApi(this.state.filter);
+    this.getPhotosFromApi(this.state.filter, this.state.id);
   }
 
-  getPhotosFromApi(filter) {
+  getPhotosFromApi(filter, id) {
     this.setState({
       photos: null,
-      count: null,
-      filter: filter
+      count: 0,
+      filter: filter,
+      id: id
     });
 
-    getPhotos(filter)
+    getPhotos(filter, id)
       .then(photos => {
         this.setState({
           photos,
@@ -52,7 +55,8 @@ class PhotoGallery extends Component {
       return (
         <div className='gallery container'>
           <ResultsCount count={count} filter={filter} />
-          <Filter handleFilter={this.getPhotosFromApi} currentFilter={filter} />
+          <DropDown handleFilter={this.getPhotosFromApi} currentFilter={filter} id={'dropDown'}/>
+          <InputSearch handleFilter={this.getPhotosFromApi} id='inputSearch'/>
           <h3 className='break'>Feed: </h3>
           <ul className='photos-wrapper'>
             { photos.map(photo => <Card photo={photo} />) }

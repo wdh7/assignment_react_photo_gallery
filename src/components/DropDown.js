@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from './elements/Button';
 
-class Filter extends Component {
+class DropDown extends Component {
   constructor(props) {
     super(props)
 
@@ -20,7 +21,7 @@ class Filter extends Component {
 
   render() {
     const { filter } = this.state;
-    const { handleFilter } = this.props;
+    const { handleFilter, id } = this.props;
 
     return (
       <form className='container filter-form'>
@@ -33,17 +34,17 @@ class Filter extends Component {
           <option value='valencia'>Valencia</option>
           <option value='inkwell'>Inkwell</option>
           <option value='ludwig'>Ludwig</option>
-        </select><br /><br />
-        <button type='button' onClick={handleFilter.bind(null, filter)}>Submit</button>
+        </select>
+        <Button label='Filter' action={handleFilter} search={filter} id={id} />
       </form>
     )
   }
 }
 
-Filter.propTypes = {
+DropDown.propTypes = {
   handleFilter: PropTypes.func.isRequired,
   currentFilter: PropTypes.string.isRequired
 };
 
 
-export default Filter;
+export default DropDown;

@@ -56,3 +56,13 @@ img {
 label {
   margin-right: 15px;
 }
+
+input {
+  width: 300px;
+  text-align: center;
+  padding-right: 5px;
+}
+
+button {
+  margin-left: 15px;
+}
